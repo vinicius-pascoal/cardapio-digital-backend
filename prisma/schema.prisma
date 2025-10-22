@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Categoria {
+  id     Int     @id @default(autoincrement())
+  nome   String  @unique
+  pratos Prato[]
+}
+
+model Prato {
+  id          Int        @id @default(autoincrement())
+  nome        String
+  descricao   String?
+  preco       Decimal    @db.Decimal(10,2)
+  categoriaId Int
+  categoria   Categoria  @relation(fields: [categoriaId], references: [id], onDelete: Restrict)
+  itens       ItemPedido[]
+  @@index([categoriaId])
+}
+
+model Pedido {
+  id        Int          @id @default(autoincrement())
+  criadoEm  DateTime     @default(now())
+  itens     ItemPedido[]
+}
+
+model ItemPedido {
+  id        Int     @id @default(autoincrement())
+  pedidoId  Int
+  pratoId   Int
+  quantidade Int    @default(1)
+  pedido    Pedido  @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
+  prato     Prato   @relation(fields: [pratoId], references: [id], onDelete: Restrict)
+
+  @@unique([pedidoId, pratoId])
+  @@index([pratoId])
+}

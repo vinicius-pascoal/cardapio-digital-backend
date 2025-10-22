@@ -1,0 +1,368 @@
+{
+  "info": {
+    "name": "Cum Cardapio",
+    "_postman_id": "e7ac3b7d-6d2a-4b29-a7a1-111111111111",
+    "description": "Coleção de testes para a API do Cardápio Digital",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Categorias",
+      "item": [
+        {
+          "name": "Criar Categoria",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\": \"Lanches\"}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar Categorias",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obter Categoria por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/categories/{{categoriaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "categories",
+                "{{categoriaId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Categoria",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\": \"Bebidas\"}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/categories/{{categoriaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "categories",
+                "{{categoriaId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Excluir Categoria",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/categories/{{categoriaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "categories",
+                "{{categoriaId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pratos",
+      "item": [
+        {
+          "name": "Criar Prato",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\": \"Hamb\\u00farguer Cl\\u00e1ssico\", \"descricao\": \"P\\u00e3o, carne, queijo e salada\", \"preco\": 24.9, \"categoriaId\": 1}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dishes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar Pratos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dishes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obter Prato por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes/{{pratoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dishes",
+                "{{pratoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Prato",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nome\": \"Hamb\\u00farguer Duplo\", \"preco\": 29.9}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes/{{pratoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dishes",
+                "{{pratoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Excluir Prato",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes/{{pratoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dishes",
+                "{{pratoId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "Criar Pedido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"items\": [{\"pratoId\": 1, \"quantidade\": 2}, {\"pratoId\": 2, \"quantidade\": 1}]}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar Pedidos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obter Pedido por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/{{pedidoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "{{pedidoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Pedido (substitui itens)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"items\": [{\"pratoId\": 1, \"quantidade\": 1}]}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/{{pedidoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "{{pedidoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Excluir Pedido",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/{{pedidoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "{{pedidoId}}"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "categoriaId",
+      "value": "1"
+    },
+    {
+      "key": "pratoId",
+      "value": "1"
+    },
+    {
+      "key": "pedidoId",
+      "value": "1"
+    }
+  ]
+}
